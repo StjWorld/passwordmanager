@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+<h3>Add Data</h3>
+<small>Welcome, {{session["username"]}}</small>
+<hr>
+<form method = "post">
+    {{ render_field(form.title,class = "form-control") }}
+    {{ render_field(form.user_name,class = "form-control") }}
+    {{ render_field(form.user_pw,class = "form-control") }}
+    {{ render_field(form.site_url,class = "form-control") }}
+    <button type="submit" class="btn btn-danger">Save</button>
+</form>
+{% endblock body %}

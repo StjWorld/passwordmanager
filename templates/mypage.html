@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+<h3>My Page</h3>
+<small>Welcome, {{session["username"]}}</small>
+<br>
+<br>
+<br>
+<hr>
+<div class="text-right">
+<a href="/user_delete/{{session['username']}}" class = "btn btn-danger">Delete User</a>
+</div>
+<a href="/add_data" class = "btn btn-primary">Add</a>
+<br><br>
+{% if my_data %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Username</th>
+      <th scope="col">Link</th>
+      <th scope="col">Password</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for my_da in my_data %}
+    <tr>
+      <td>{{my_da.title}}</td>
+      <td>{{my_da.user_url}}</td>
+      <td>{{my_da.url}}</td>
+      <td><a href="/page/{{my_da.locid}}" class="btn btn-primary">See Password</a></td>
+      <td><a href="/edit/{{my_da.locid}}" class="btn btn-primary">Edit</a></td>
+      <td><a href="/delete/{{my_da.locid}}" class="btn btn-danger">Delete</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="alert alert-danger">You don't have any data yet</div>
+{% endif %}
+{% endblock body %}
