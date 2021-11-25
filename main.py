@@ -52,7 +52,7 @@ def detail(locid):
         raw_pw = my_data["user_pw"]
         user_pw = cipher_suite.decrypt(raw_pw).decode()
         ############Danger ZONE!!!######################
-        ############With a Print command here password can be stolen################
+        ############data security risk here################
         return render_template("page.html", my_data=my_data, user_pw=user_pw)
     else:
         return render_template("page.html")
@@ -257,5 +257,5 @@ class DataPage(Form):
 
 
 if __name__ == "__main__":
-    app.run(host='192.168.1.8')
+    app.run()
 
